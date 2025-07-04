@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Login - EquiFy</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Left: Login Form -->
+    <div class="login">
+      <h1>Log in</h1>
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password"><br>
+      <div class="remember">
+        <input type="checkbox" id="remembers">
+        <label for="remember">Remember me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button>Log in</button>
+
+      <div class="connectwith"><hr><p>Or Connect With</p><hr></div>
+      <ul>
+        <li><i class="fab fa-facebook-f fa-2x"></i></li>
+        <li><i class="fab fa-github fa-2x"></i></li>
+      </ul>
+      <span class="copyright">&copy;2025 EquiFy</span>  
+    </div>
+
+    <!-- Right: Welcome message + image -->
+    <div class="register">
+      <img src="assets/stock-image.png" alt="Stock Market" class="stock-image">
+      <h2>Welcome back!</h2>
+      <p>To keep connected with us please login with your personal info</p>
+      <button onclick="window.location.href='signup.php'">Register <i class="fas fa-arrow-circle-right"></i></button>
+    </div>
+
+  </div>
+<script src="script.js"></script>
+
+</body>
+</html>
