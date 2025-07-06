@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio - EquiFy</title>
+  <link rel="stylesheet" href="stock_style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+
+    /* Base Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f4f6f8;
+}
+
+/* Header Title */
+.Myport {
+  background-color: #369358;
+  border-radius: 8px;
+  padding: 8px;
+  display: inline-block;
+}
+
+/* Header */
+.portfolio-header {
+  background-color: #267853;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Header Buttons Container */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Back Button - White with Green Text */
+.back-btn {
+  background: white;
+  color: #28a745;
+  padding: 6px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back-btn:hover {
+  background: #e6f4ea;
+  color: #0f3e1a;
+}
+
+/* Logout Button - Green with White Text */
+.logout-btn {
+  background: #a72828;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #218838;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Portfolio Table */
+.portfolio-table {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Chart in Table */
+canvas {
+  width: 100px;
+  height: 40px;
+}
+
+/* Cash Forms */
+.cash-forms {
+  width: 400px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cash-form {
+  background: white;
+  padding-left: 20px;
+  margin-left: 90px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.cash-form h3 {
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.cash-form input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.cash-form button {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cash-form button:hover {
+  background: #218838;
+}
+
+/* Sell Button */
+.sell-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sell-button:hover {
+  background-color: #c82333;
+}
+
+  </style>
+</head>
+<div>
+
+  <header class="portfolio-header">
+  <h1 class="Myport">My Portfolio</h1>
+  <div>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+<form action="logout.php" method="post" style="display:inline;">
+  <button type="submit" class="logout-btn">Logout</button>
+</form>
+
+  </div>
+</header>
+
+
+  <div class="main-content">
+
+    <div class="portfolio-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Stock</th>
+            <th>Shares</th>
+            <th>Value</th>
+            <th>Chart</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Stock A</td>
+            <td>12.34</td>
+            <td>₱5,678.90</td>
+            <td><canvas id="chart1"></canvas></td>
+            <td>
+              <form action="sell.php" method="post" onsubmit="return confirm('Are you sure you want to sell Stock A?')">
+                <input type="hidden" name="stock_id" value="1">
+                <button type="submit" class="sell-button">Sell</button>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Stock B</td>
+            <td>8.12</td>
+            <td>₱3,120.40</td>
+            <td><canvas id="chart2"></canvas></td>
+            <td>
+              <form action="sell.php" method="post" onsubmit="return confirm('Are you sure you want to sell Stock B?')">
+                <input type="hidden" name="stock_id" value="2">
+                <button type="submit" class="sell-button">Sell</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cash-forms">
+      <form class="cash-form" action="cash_in.php" method="post" onsubmit="return confirm('Confirm cash in?')">
+        <h3>Cash In</h3>
+        <input type="number" name="amount" placeholder="Enter amount" required min="1" step="0.01">
+        <button type="submit">Cash In</button>
+      </form>
+
+      <form class="cash-form" action="cash_out.php" method="post" onsubmit="return confirm('Confirm cash out?')">
+        <h3>Cash Out</h3>
+        <input type="number" name="amount" placeholder="Enter amount" required min="1" step="0.01">
+        <button type="submit">Cash Out</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    const exampleData1 = [100, 102, 105, 103, 108, 107];
+    const exampleData2 = [120, 118, 117, 119, 122, 125];
+
+    new Chart(document.getElementById('chart1').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: Array(exampleData1.length).fill(""),
+        datasets: [{
+          data: exampleData1,
+          borderColor: '#28a745',
+          backgroundColor: 'rgba(40, 167, 69, 0.2)',
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false }},
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chart2').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: Array(exampleData2.length).fill(""),
+        datasets: [{
+          data: exampleData2,
+          borderColor: '#28a745',
+          backgroundColor: 'rgba(40, 167, 69, 0.2)',
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false }},
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

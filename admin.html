@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel - EquiFy</title>
+  <link rel="stylesheet" href="stock_style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #267853;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .Adminpan {
+      background-color: #369358;
+      border-radius: 8px;
+      padding: 8px;
+      display: inline-block;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* Back Button - white with green text */
+    .back-link {
+      text-decoration: none;
+      background: white;
+      color: #000000;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s, color 0.3s;
+      border: none;
+    }
+
+    .back-link:hover {
+       background: #e6f4ea;
+  color: #0f3e1a;
+    }
+
+    /* Logout Button */
+    .logout-btn {
+      background: #a72828;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #441111;
+    }
+
+    .main {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #218838;
+    }
+
+    .addnewstck{
+      background-color:#267853;
+      color:white;
+      padding:10px;
+      border-radius:8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="Adminpan">Admin Panel</h1>
+    <div class="header-buttons">
+      <a href="index.html" class="back-link">← Back to Home</a>
+      <form action="logout.php" method="post" style="display:inline;">
+        <button type="submit" class="logout-btn">Logout</button>
+      </form>
+    </div>
+  </header>
+
+  <div class="main">
+    <h2 class="addnewstck">Add New Stock</h2>
+    <form action="add_stock.php" method="POST">
+      <label for="stockName">Stock Name:</label>
+      <input type="text" id="stockName" name="stockName" required>
+
+      <label for="stockValue">Initial Stock Value:</label>
+      <input type="number" id="stockValue" name="stockValue" step="0.01" required>
+
+      <label for="stockQuantity">Quantity:</label>
+      <input type="number" id="stockQuantity" name="stockQuantity" required>
+
+      <button type="submit" class="btn">Add Stock</button>
+    </form>
+  </div>
+
+</body>
+</html>
