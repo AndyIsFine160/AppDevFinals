@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,209 +7,175 @@
   <link rel="stylesheet" href="stock_style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #f4f6f9;
-  text-align: center;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f4f6f9;
+      text-align: center;
+    }
 
-/* Back Button - White with Green Text */
-.back-btn {
-  background: white;
-  color: #28a745;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  transition: background 0.3s, color 0.3s;
-}
+    .back-btn {
+      background: white;
+      color: #28a745;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+    }
 
-.back-btn:hover {
-   background: #e6f4ea;
-  color: #0f3e1a;
-}
+    .back-btn:hover {
+      background: #e6f4ea;
+      color: #0f3e1a;
+    }
 
-/* Logout Button - Green with White Text */
-.logout-btn {
-  background: #a72828;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  transition: background 0.3s;
-}
+    .logout-btn {
+      background: #a72828;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
 
-.logout-btn:hover {
-  background: #441111;
-}
+    .logout-btn:hover {
+      background: #441111;
+    }
 
-/* Container for buttons */
-.header-buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-/* Chart Header */
-.chart-header {
-  background-color: #267853;
-  color: white;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .chart-header {
+      background-color: #267853;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.chart-header h1 {
-  margin: 0;
-}
+    .chart-header h1 {
+      margin: 0;
+    }
 
-/* Layout for Chart + Forms */
-.chart-layout {
-  display: flex;
-  gap: 40px;
-  padding: 40px;
-  justify-content: space-between;
-  align-items: flex-start;
-}
+    .stockchrt {
+      background-color: #369358;
+      border-radius: 8px;
+      padding: 8px;
+    }
 
-/* Chart Container */
-.chart-container {
-  flex: 1;
-  min-width: 0;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    .chart-layout {
+      display: flex;
+      gap: 40px;
+      padding: 40px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
 
-/* Canvas Chart */
-canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
+    .chart-container {
+      flex: 1;
+      min-width: 0;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-/* Cash In / Out Forms */
-.cash-forms {
-  width: 280px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+    .chart-title {
+      font-weight: bold;
+      font-size: 18px;
+      color: #267853;
+      margin-bottom: 12px;
+    }
 
-.cash-form {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-  text-align: center;
-}
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
 
-.cash-form h3 {
-  margin-bottom: 12px;
-}
+    .cash-form {
+      width: 280px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
 
-.cash-form input {
-  width: 90%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
+    .cash-form h3 {
+      margin-bottom: 12px;
+    }
 
-.cash-form button {
-  width: 100%;
-  padding: 10px;
-  background: #28a745;
-  border: none;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
+    .cash-form input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
 
-.cash-form button:hover {
-  background: #218838;
-}
+    .cash-form button {
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-/* Navigation Buttons (if used elsewhere) */
-.nav-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  margin: 20px;
-}
-
-.nav-buttons a {
-  display: inline-block;
-  padding: 10px 18px;
-  background-color: #28a745;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.nav-buttons a:hover {
-  background-color: #218838;
-}
-
-.stockchrt{
-  background-color: #369358;
-      border-radius:8px;
-      padding:8px;
-}</style>
+    .cash-form button:hover {
+      background: #218838;
+    }
+  </style>
 </head>
-<script>
-  function confirmBuy() {
-    return confirm("Are you sure you want to buy this stock?");
-  }
-</script>
 
 <body class="chart-page">
 
   <!-- Header -->
- <header class="chart-header">
-  <h1 class="stockchrt">Stock Chart Viewer</h1>
-  <div class="header-buttons">
-    <a href="index.html" class="back-btn">← Back to Home</a>
-    <form action="logout.php" method="post" style="display:inline;">
-      <button type="submit" class="logout-btn">Logout</button>
-    </form>
-  </div>
-</header>
+  <header class="chart-header">
+    <h1 class="stockchrt">Stock Chart Viewer</h1>
+    <div class="header-buttons">
+      <a href="index.html" class="back-btn">← Back to Home</a>
+      <form action="logout.php" method="post" style="display:inline;">
+        <button type="submit" class="logout-btn">Logout</button>
+      </form>
+    </div>
+  </header>
 
-
-
-  <!-- Layout: Chart + Cash Forms -->
+  <!-- Layout: Chart + Buy Form -->
   <main class="chart-layout">
-    
-    <!-- Chart -->
+
+    <!-- Chart  -->
     <div class="chart-container">
+      <div class="chart-title" id="stock-name">
+        Stock A <!-- Replace this later with PHP: <?= htmlspecialchars($stock_name) ?> -->
+      </div>
       <canvas id="stockChart"></canvas>
     </div>
 
-   <form class="cash-form" action="buy.php" method="post" onsubmit="return confirmBuy()">
-  <h3>🛒 Buy Stock</h3>
-  <input type="hidden" name="stock_id" value="1" />
-  <input type="number" name="amount" placeholder="Enter amount" required min="1" step="0.01" />
-  <button type="submit">Buy</button>
-</form>
-
+    <!-- Buy Form -->
+    <form class="cash-form" action="buy.php" method="post" onsubmit="return confirm('Are you sure you want to buy this stock?')">
+      <h3>Buy Stock</h3>
+      <input type="hidden" name="stock_id" value="1" />
+      <input type="number" name="amount" placeholder="Enter amount" required min="1" step="0.01" />
+      <button type="submit">Buy</button>
+    </form>
 
   </main>
 
-  <!-- Chart Script -->
+  <!-- Chart Script (some are placeholder) -->
   <script>
     const ctx = document.getElementById('stockChart').getContext('2d');
     const stockChart = new Chart(ctx, {
