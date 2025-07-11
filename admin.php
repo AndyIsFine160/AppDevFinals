@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <title>Admin Panel - EquiFy</title>
-  <link rel="stylesheet" href="stock_style.css" />
+  <link rel="stylesheet" href="stock.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f4f6f8;
       margin: 0;
       padding: 0;
+    }
+    .back-btn {
+        background: white;
+        color: #28a745;
+        padding: 8px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background 0.3s, color 0.3s;
     }
 
     header {
@@ -97,8 +108,9 @@
 
     input[type="text"],
     input[type="number"] {
-      width: 100%;
+      width: 96.5%;
       padding: 10px;
+      margin: 0 auto; 
       margin-bottom: 20px;
       border-radius: 8px;
       border: 1px solid #ccc;
@@ -133,7 +145,6 @@
   <header class="chart-header">
         <h1 class="stockchrt">Admin Panel</h1>
         <div class="header-buttons">
-            <?php echo ($_SESSION['isAdmin']) ? '<a href="admin.html" class="back-btn" id = "isAdminBa">Admin Panel</a>' : '';?>
         <a href="stocks.php" class="back-btn">Available Stocks</a>
         <a href="portfolio.php" class="back-btn">Portfolio</a>
         <form action="logout.php" method="post" style="display:inline;">
